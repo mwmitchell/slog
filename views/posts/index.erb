@@ -1,0 +1,21 @@
+<form>
+	<input type="text" name="q" value="<%= params[:q] %>"/>
+	<input type="submit" value="Search" />
+</form>
+
+<% @posts.each do |post| %>
+	<div class="post">
+		<div class="container">
+			<div class="left">
+				<a href="/posts/<%= post.id %>"><%= (post.title || post.id) %></a>
+			</div>
+			<div class="right">
+				<form method="post" action="/posts/<%= post.id %>">
+					<input type="hidden" name="_method" value="delete" />
+					<input type="submit" value="Delete" class="delete" />
+				</form>
+			</div>
+		</div>
+		<hr/>
+	</div>
+<% end %>

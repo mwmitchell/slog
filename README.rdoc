@@ -1,0 +1,15 @@
+=Slog
+A little blog app, built with Sinatra using Solr for its "database".
+
+==Demo
+To index the demo data and have a play:
+  rake slog:index_demo
+  ruby ./app.rb
+
+Now browse to http://localhost:4567
+
+==Roadmap
+* implement comments
+* add sinatra restful-route and asset helpers
+* validations
+* oh yeah, tests and stuff
