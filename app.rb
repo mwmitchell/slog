@@ -30,6 +30,17 @@ helpers do
     Slog.solr
   end
   
+  # truncates a string
+  # "limit" can be any number
+  # adds "..." to the end if the truncated string is smaller than the original
+  def trunc string, limit=10
+    words = string.gsub("\n", '__nl__').split(" ")
+    sections = words[0..limit]
+    sections << '...' if sections.size < words.size
+    truncated_string = sections.join(" ")
+    truncated_string.gsub("__nl__", "\n")
+  end
+  
   def rc red_cloth_text
     RedCloth.new(red_cloth_text).to_html
   end
@@ -54,6 +65,7 @@ end
 
 # new
 get '/posts/new' do
+  @post = Post.new(params[:post] || {})
   erb :'posts/new'
 end
 

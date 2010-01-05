@@ -8,6 +8,13 @@ body {
 	color: #454545;
 }
 
+hr {
+	color: #f00;
+	background-color: #ddd;
+	height: 1px;
+	border:none;
+}
+
 h1, h2, h3 {
 	margin-top: 0;
 	color: #8C0209;
@@ -83,35 +90,73 @@ text-align:left;
 width:64%;
 }
 
+form textarea{
+width:210px;
+height:60px;
+}
+form div.element{
+margin:1em 0;
+border-bottom:1px dotted #cdcdcd;
+padding-bottom:.6em;
+}
+form div.element .label{
+width: 200px;
+float: left;
+text-align: right;
+margin-right: 0.5em;
+display: block;
+}
+form div.element input, form div.element textarea, form div.element select {
+margin-left: 1em;
+}
+
+form .text{
+	width:150px;
+}
+
+form .element input.text, form .element .textarea {
+	width: 90%;
+}
+
+form .element .textarea {
+	height: 150px;
+}
+
+form label{
+	font-weight:bold;
+	color:#333;
+	font-size:120%;
+}
+
 #page{
-	width:950px;
-	margin:0 auto;
-	padding:1em;
-	background-color:white;
+width:950px;
+margin:0 auto;
+padding:1em;
+background-color:white;
 }
 
 #nav {
-	background-color:#999;
-	padding:1em;
-	margin:0;
-	margin-bottom:1em;
+background-color:#999;
+padding:1em;
+margin:0;
+margin-bottom:1em;
 }
 #nav li{
-	display:inline;
-	margin-right:1em;
+display:inline;
+margin-right:1em;
 }
 #nav li a {
-	background-color:#876;
-	color:#fff;
-	padding:1em;
-	text-decoration:underline;
+background-color:#876;
+color:#fff;
+padding:1em;
+text-decoration:underline;
 }
-	#nav li a:hover {
-		background-color:#dcb;
-		color:#654;
-	}
+#nav li a:hover {
+background-color:#dcb;
+color:#654;
+}
 
 #content {
-	border:dotted 1px #888;
-	padding:1em;
+border:dotted 1px #888;
+padding:1em;
 }

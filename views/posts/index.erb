@@ -1,17 +1,19 @@
 <form>
-	<input type="text" name="q" value="<%= params[:q] %>"/>
+	<input class="text" type="text" name="q" value="<%= params[:q] %>"/>
 	<input type="submit" value="Search" />
 </form>
 
-<%= @posts.per_page %>
-
 <%= will_paginate @posts %>
 
-<% @posts.each do |post| %>
+<% @posts.each_with_index do |post, index| %>
+	<% if index > 0 %><hr/><% end %>
 	<div class="post">
 		<div class="container">
 			<div class="left">
-				<a href="/posts/<%= post.id %>"><%= (post.title || post.id) %></a>
+				<h5><a href="/posts/<%= post.id %>"><%= (post.title || post.id) %></a></h5>
+				<p>
+					<%= rc h(trunc post.body) %>
+				</p>
 			</div>
 			<div class="right">
 				<form method="post" action="/posts/<%= post.id %>">
@@ -20,6 +22,5 @@
 				</form>
 			</div>
 		</div>
-		<hr/>
 	</div>
 <% end %>
