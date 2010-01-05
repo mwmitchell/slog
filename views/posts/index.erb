@@ -3,6 +3,10 @@
 	<input type="submit" value="Search" />
 </form>
 
+<%= @posts.per_page %>
+
+<%= will_paginate @posts %>
+
 <% @posts.each do |post| %>
 	<div class="post">
 		<div class="container">

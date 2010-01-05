@@ -1,0 +1,6 @@
+[submodule "lib/sinatra_more"]
+	path = lib/sinatra_more
+	url = git://github.com/nesquena/sinatra_more.git
+[submodule "lib/will_paginate"]
+	path = lib/will_paginate
+	url = git://github.com/mislav/will_paginate.git
