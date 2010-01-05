@@ -9,7 +9,9 @@ To index the demo data and have a play:
 Now browse to http://localhost:4567
 
 ==Roadmap
+* get views into shape (css, html etc.)
+* pagination
 * implement comments
-* add sinatra restful-route and asset helpers
+* add Sinatra restful-route, asset and view helpers (sinatra-more?)
 * validations
 * oh yeah, tests and stuff
