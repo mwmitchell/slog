@@ -560,7 +560,7 @@
      <str name="echoParams">explicit</str>
      <float name="tie">0.01</float>
      <str name="qf">
-        text^0.5 post_title_t post_body_t id
+        title^0.8 body^0.7 text^0.5 id
      </str>
      <str name="fl">
         id,*,score
@@ -571,7 +571,7 @@
      <int name="ps">100</int>
      <str name="q.alt">*:*</str>
      <!-- example highlighter config, enable per-query with hl=true -->
-     <str name="hl.fl">text post_title_t post_body_t</str>
+     <str name="hl.fl">text title body</str>
      <!-- for this field, we want no fragmenting, just highlighting -->
      <str name="f.name.hl.fragsize">0</str>
      <!-- instructs Solr to return the field itself if no query terms are

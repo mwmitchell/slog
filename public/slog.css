@@ -90,10 +90,6 @@ text-align:left;
 width:64%;
 }
 
-form textarea{
-width:210px;
-height:60px;
-}
 form div.element{
 margin:1em 0;
 border-bottom:1px dotted #cdcdcd;
@@ -106,26 +102,38 @@ text-align: right;
 margin-right: 0.5em;
 display: block;
 }
+
 form div.element input, form div.element textarea, form div.element select {
 margin-left: 1em;
+}
+
+form div.element textarea {
+	margin-left:.5em;
 }
 
 form .text{
 	width:150px;
 }
 
-form .element input.text, form .element .textarea {
+form .element input.text {
 	width: 90%;
 }
 
 form .element .textarea {
+	width: 90.5%;
 	height: 150px;
 }
+
 
 form label{
 	font-weight:bold;
 	color:#333;
 	font-size:120%;
+}
+
+form label em {
+	font-weight:normal;
+	margin-left:90px;
 }
 
 #page{
@@ -159,4 +167,9 @@ color:#654;
 #content {
 border:dotted 1px #888;
 padding:1em;
+}
+
+.post{
+	padding:.5em;
+	background-color:#efefef;
 }

@@ -68,14 +68,27 @@ module Slog
     include SolrObject
 
     field :id
-    field :title, :post_title_s
-    field :body, :post_body_s
-
+    field :title
+    field :body
+    field :model
+    field :created_at
+    field :updated_at
+    
+    def to_solr
+      require 'date'
+      require 'time'
+      extras = {:model => 'post'}
+      if self[:created_at]
+        extras[:updated_at] = Time.parse( DateTime.now.to_s ).utc.iso8601
+      end
+      super.merge extras
+    end
+    
     def self.find params, &blk
       params[:qt] ||= 'posts'
       super params, &blk
     end
-
+    
     def self.find_by_id id
       find :fq => %(id:"#{id}")
     end

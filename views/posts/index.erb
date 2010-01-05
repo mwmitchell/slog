@@ -10,7 +10,8 @@
 	<div class="post">
 		<div class="container">
 			<div class="left">
-				<h5><a href="/posts/<%= post.id %>"><%= (post.title || post.id) %></a></h5>
+				<h1><a href="/posts/<%= post.id %>"><%= (post.title || post.id) %></a></h1>
+				<p>created at <%= post.created_at %></p>
 				<p>
 					<%= rc h(trunc post.body) %>
 				</p>
