@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'sinatra'
+require 'redcloth'
 
 $: << "#{File.dirname(__FILE__)}/lib"
 $: << "#{File.dirname(__FILE__)}/lib/sinatra_more/lib"
@@ -27,6 +28,10 @@ helpers do
   
   def solr
     Slog.solr
+  end
+  
+  def rc red_cloth_text
+    RedCloth.new(red_cloth_text).to_html
   end
   
   def list_posts

@@ -1,2 +1,2 @@
 <h1><%= @post.title %> - <a href="/posts/<%= @post.id %>/edit">edit</a> </h1>
-<p><%= @post.body %></p>
+<p><%= rc h(@post.body) %></p>
