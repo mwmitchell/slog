@@ -1,2 +1,12 @@
-<h1><%= @post.title %> - <a href="/posts/<%= @post.id %>/edit">edit</a> </h1>
-<p><%= rc h(@post.body) %></p>
+<div class="post">
+	<h2><%= @post.title %> - <a href="/posts/<%= @post.id %>/edit">edit</a> </h2>
+	<p><%= rc h(@post.body) %></p>
+</div>
+
+<div class="comments">
+	<h3>Leave a comment</h3>
+	<em>you must be <a href="/sessions/new">logged in</a> to post a comment.</em>
+	<div class="comment">
+		
+	</div>
+</div>

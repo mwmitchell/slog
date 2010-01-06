@@ -1,27 +1,33 @@
-<form>
-	<input class="text" type="text" name="q" value="<%= params[:q] %>"/>
-	<input type="submit" value="Search" />
-</form>
+<div id="search">
+	<form>
+		<input class="text" type="text" name="q" value="<%= params[:q] %>"/>
+		<input type="submit" value="Search" />
+	</form>
+</div>
+
+<h2>Recent Posts</h2>
 
 <%= will_paginate @posts %>
 
-<% @posts.each_with_index do |post, index| %>
-	<% if index > 0 %><hr/><% end %>
-	<div class="post">
-		<div class="container">
-			<div class="left">
-				<h1><a href="/posts/<%= post.id %>"><%= (post.title || post.id) %></a></h1>
-				<p>created at <%= post.created_at %></p>
-				<p>
-					<%= rc h(trunc post.body) %>
-				</p>
-			</div>
-			<div class="right">
-				<form method="post" action="/posts/<%= post.id %>">
-					<input type="hidden" name="_method" value="delete" />
-					<input type="submit" value="Delete" class="delete" />
-				</form>
+<div class="posts">
+	<% @posts.each_with_index do |post, index| %>
+		<% if index > 0 %><hr/><% end %>
+		<div class="post">
+			<div class="container">
+				<div class="left">
+					<h1><a href="/posts/<%= post.id %>"><%= (post.title || post.id) %></a></h1>
+					<p>created at <%= post.created_at %></p>
+					<p>
+						<%= rc h(trunc post.body) %>
+					</p>
+				</div>
+				<div class="right">
+					<form method="post" action="/posts/<%= post.id %>">
+						<input type="hidden" name="_method" value="delete" />
+						<input type="submit" value="Delete" class="delete" />
+					</form>
+				</div>
 			</div>
 		</div>
-	</div>
-<% end %>
+	<% end %>
+</div>
