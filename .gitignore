@@ -1,3 +1,4 @@
 jetty/solr/data/*
 jetty/work/*
 jetty/logs/*
+tmp/*

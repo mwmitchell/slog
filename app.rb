@@ -1,16 +1,20 @@
-require 'rubygems'
-require 'sinatra'
-require 'redcloth'
-
 $: << "#{File.dirname(__FILE__)}/lib"
 $: << "#{File.dirname(__FILE__)}/lib/sinatra_more/lib"
 $: << "#{File.dirname(__FILE__)}/lib/will_paginate/lib"
+$: << "#{File.dirname(__FILE__)}/lib/rack-flash/lib"
 
+require 'rubygems'
+require 'sinatra'
+require 'redcloth'
+require 'openid'
+require 'rack/openid'
+require 'openid/store/filesystem'
 require 'sinatra_more/render_plugin'
 require 'sinatra_more/markup_plugin'
 require 'sinatra_more/routing_plugin'
-
 require 'sinatra_will_paginate'
+
+require 'rack-flash.rb'
 
 require 'slog'
 
@@ -20,11 +24,13 @@ helpers WillPaginate::ViewHelpers::Base
 
 helpers do
   
+  use Rack::Session::Cookie
+  use Rack::Flash
+  use Rack::OpenID
+  
   register SinatraMore::RoutingPlugin
   register SinatraMore::MarkupPlugin
   register SinatraMore::RenderPlugin
-  
-  include WillPaginate::ViewHelpers
   
   def solr
     Slog.solr
@@ -51,6 +57,36 @@ helpers do
     erb :'posts/index'
   end
   
+  def openid_consumer
+    @openid_consumer ||= OpenID::Consumer.new(session, OpenID::Store::Filesystem.new("#{File.dirname(__FILE__)}/tmp/openid"))
+  end
+  
+end
+
+get '/sessions/new' do
+  erb :'/sessions/new'
+end
+
+post '/sessions' do
+  if resp = request.env["rack.openid.response"]
+    puts 'response...'
+    if resp.status == :success
+     flash[:notice] = "Login successful!"
+     redirect '/'
+    else
+      flash[:notice] = "Error: #{resp.status}"
+      redirect '/sessions/new'
+    end
+  else
+    www_auth_headers = Rack::OpenID.build_header(:identifier => params[:openid_url])
+    headers 'WWW-Authenticate' => www_auth_headers
+    throw :halt, [401, 'got openid?']
+  end
+end
+
+delete '/sessions' do
+  session.clear
+  redirect '/'
 end
 
 # index

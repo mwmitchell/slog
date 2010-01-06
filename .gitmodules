@@ -4,3 +4,6 @@
 [submodule "lib/will_paginate"]
 	path = lib/will_paginate
 	url = git://github.com/mislav/will_paginate.git
+[submodule "lib/rack-flash"]
+	path = lib/rack-flash
+	url = git://github.com/nakajima/rack-flash.git

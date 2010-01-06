@@ -1,0 +1,9 @@
+<%= flash_tag(:notice, :class => 'flash', :id => 'flash-notice') %>
+
+<% form_tag '/sessions', :method => 'post' do %>
+	<% field_set_tag do %>
+		<%= label_tag 'OpenID URL' %>
+		<%= text_field_tag :openid_url , :value => params[:openid_url ], :id => 'openid_url', :class => 'text' %>
+		<small><a target="_blank" href="http://openid.net/get/" title="What is an OpenID? Where can i get one?'" class="help">OpenID. What?</a></small>
+	<% end %>
+<% end %>

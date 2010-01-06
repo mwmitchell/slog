@@ -173,3 +173,14 @@ padding:1em;
 	padding:.5em;
 	background-color:#efefef;
 }
+
+#openid_url {
+  background: url(login-bg.gif) no-repeat #FFF 5px;
+  padding-left: 25px;
+}
+
+.flash {
+	padding:.5em;
+	background-color:lightyellow;
+	color:darkred;
+}
