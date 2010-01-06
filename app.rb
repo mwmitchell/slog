@@ -135,16 +135,16 @@ get :edit_post do
 end
 
 # update
-put '/posts/:id' do
+put :post do
   @sresponse = Post.find_by_id params[:id]
-  doc = @sresponse.docs.first.merge(:title => params[:post][:title], :body => params[:post][:body])
+  doc = Post.new(@sresponse.docs.first.merge(:title => params[:post][:title], :body => params[:post][:body]))
   solr.add doc
   solr.commit
   redirect url_for(:post, :id => params[:id])
 end
 
 # delete
-delete '/posts/:id' do
+delete :post do
   @sresponse = Post.find_by_id params[:id]
   doc = @sresponse.docs.first
   solr.delete_by_query %(id:"#{doc.id}")
