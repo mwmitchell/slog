@@ -13,21 +13,15 @@
 	<% @posts.each_with_index do |post, index| %>
 		<% if index > 0 %><hr/><% end %>
 		<div class="post">
-			<div class="container">
-				<div class="left">
-					<h1><a href="/posts/<%= post.id %>"><%= (post.title || post.id) %></a></h1>
-					<p>created at <%= post.created_at %></p>
-					<p>
-						<%= rc h(trunc post.body) %>
-					</p>
-				</div>
-				<div class="right">
-					<form method="post" action="/posts/<%= post.id %>">
-						<input type="hidden" name="_method" value="delete" />
-						<input type="submit" value="Delete" class="delete" />
-					</form>
-				</div>
+			<div>
+				<h1><a href="/posts/<%= post.id %>"><%= (post.title || post.id) %></a></h1>
+				<p>created at <%= post.created_at %></p>
+				<p><%= rc h(post.body) %></p>
 			</div>
+			<ul>
+				<li><a href="<%= url_for(:post, :id=>post.id) %>#comments">comments</a></li>
+				<li><a href="<%= url_for(:post, :id=>post.id) %>">permalink</a></li>
+			</ul>
 		</div>
 	<% end %>
 </div>

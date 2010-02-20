@@ -10,7 +10,7 @@ namespace :jetty do
   task :start do
     Rake::Task["jetty:stop"].invoke
     puts "*** starting jetty on port #{jetty_start_port}..."
-    cmd = "java -Djetty.port=#{jetty_start_port} -DSTOP.KEY=#{jetty_stop_key} -DSTOP.PORT=#{jetty_stop_port} -jar start.jar"
+    cmd = "java #{java_opts} -Djetty.port=#{jetty_start_port} -DSTOP.KEY=#{jetty_stop_key} -DSTOP.PORT=#{jetty_stop_port} -jar start.jar"
     cmd = "cd #{jetty_dir}; #{cmd}"
     `#{cmd}`
   end

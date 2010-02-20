@@ -1,5 +1,3 @@
-require 'rsolr-ext'
-
 module Slog
   
   def self.solr
@@ -73,6 +71,7 @@ module Slog
     field :model
     field :created_at
     field :updated_at
+    field :category
     
     def to_solr
       require 'date'
